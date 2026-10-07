@@ -1,29 +1,41 @@
+//code by pranay
+//date 7-10-26
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-char s[6];
-int count = 0;
+#define N 30
 
-void generate(int pos, int has_pair)
-{
-    if (pos == 5) {
-        if (has_pair) {
-            s[5] = '\0';
-            printf("%s\n", s);
-            count++;
-        }
-        return;
-    }
-
-    for (char ch = 'a'; ch <= 'c'; ch++) {
-        s[pos] = ch;
-        int pair = has_pair || (pos > 0 && s[pos - 1] == ch);
-        generate(pos + 1, pair);
-    }
+void swap(int *a, int *b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
 }
 
-int main(void)
-{
-    generate(0, 0);
-    printf("Total = %d\n", count);
+void fun(int A[], int n) {
+    for (int i = 0; i <= n - 2; i++)
+        for (int j = 0; j <= n - i - 2; j++)
+            if (A[j] > A[j + 1])
+                swap(&A[j], &A[j + 1]);
+}
+
+int uniform100(void) {
+    double r = (double)rand() / RAND_MAX;  /* [0,1] */
+    return (int)(r * 100 + 0.5);           /* integer 0-100 */
+}
+
+int main(void) {
+    int A[N];
+    srand((unsigned)time(NULL));
+
+    for (int i = 0; i < N; i++)
+        A[i] = uniform100();
+
+    fun(A, N);
+
+    for (int i = 0; i < N; i++)
+        printf("%d ", A[i]);
+    printf("\n");
     return 0;
 }
