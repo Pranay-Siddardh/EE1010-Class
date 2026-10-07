@@ -7,7 +7,7 @@ int main() {
     int a, b, c;
 
     // Print headers
-    printf("A  B  C | abc  a'bc ab'c abc' | Output (F)\n");
+    printf("A  B  C | ab bc ac | Output (F)\n");
     printf("------------------------------------------\n");
 
     // Loop through all 8 binary combinations
@@ -16,17 +16,16 @@ int main() {
             for (c = 0; c <= 1; c++) {
                 
                 // Evaluate individual product terms
-                int term1 = a && b && c;          // abc
-                int term2 = (!a) && b && c;       // a'bc
-                int term3 = a && (!b) && c;       // ab'c
-                int term4 = a && b && (!c);       // abc'
+                int term1 = a && b;          // ab
+                int term2 = b && c;       // bc
+                int term3 = a && c;       // ca
                 
-                // Final Boolean Output (ORing the terms together)
-                int F = term1 || term2 || term3 || term4;
+                // Final Boolean Output (OR ing the terms together)
+                int F = term1 || term2 || term3;
 
                 // Print the current row evaluation
-                printf("%d  %d  %d |  %d    %d    %d    %d   |    %d\n", 
-                       a, b, c, term1, term2, term3, term4, F);
+                printf("%d  %d  %d |  %d    %d    %d   |    %d\n", 
+                       a, b, c, term1, term2, term3, F);
             }
         }
     }
