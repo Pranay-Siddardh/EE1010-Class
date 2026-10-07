@@ -7,7 +7,7 @@ int main() {
     int a, b, c;
 
     // Print headers
-    printf("A  B  C | ab bc ac | Output (F)\n");
+    printf("A  B  C | ab    bc   ac  | Output (F)\n");
     printf("------------------------------------------\n");
 
     // Loop through all 8 binary combinations
