@@ -1,14 +1,21 @@
 //code by pranay date 7-10-26
 
 #include <stdio.h>
-int foo(int S[],int size){
- if(size == 0) return 0;
- if(size == 1) return 1;
- if(S[0] != S[1]) return 1+foo(S+1,size-1);
- return foo(S+1,size-1);
+int gate (int n) {
+ int d, t, newnum, turn;
+ newnum = turn = 0; t=1;
+ while (n>=t) t *= 10;
+ t /=10;
+ while (t>0) {
+ d = n/t;
+ n = n%t;
+ t /= 10;
+ if (turn) newnum = 10*newnum + d;
+ turn = (turn + 1) % 2;
+ }
+ return newnum;
 }
-int main(){
- int A[]={0,1,2,2,2,0,0,1,1};
- printf("%d",foo(A,9));
+int main () {
+ printf ("%d", gate(14362));
  return 0;
 }
