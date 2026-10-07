@@ -1,22 +1,31 @@
-//Code by pranay 
-//date 7-10-26
+//code by pranay date 7-10-26
 
 #include <stdio.h>
 
 int binarynum[4];   /* global: binarynum[i] = bit bi */
-int F[16] = {0};    /* everything 0 by default */
+int F[16];
 
 void tobinary(int d) {
     for (int i = 0; i < 4; i++)
         binarynum[i] = (d >> i) & 1;
 }
 
-int main(void) {
-    int minterms[] = {0, 2, 4, 8, 10, 11, 12};
+/* F = b1'b0' + b2'b0' + b3 b2' b1, read from the global array */
+int boolean_F(void) {
+    int b0 = binarynum[0];
+    int b1 = binarynum[1];
+    int b2 = binarynum[2];
+    int b3 = binarynum[3];
 
-    /* 1 only for the minterms, the rest stay 0 */
-    for (int k = 0; k < 7; k++)
-        F[minterms[k]] = 1;
+    return (!b1 && !b0) || (!b2 && !b0) || (b3 && !b2 && b1);
+}
+
+int main(void) {
+    /* compute F for every input using the Boolean logic */
+    for (int d = 0; d < 16; d++) {
+        tobinary(d);
+        F[d] = boolean_F();
+    }
 
     /* truth table */
     printf("Truth table\n");
