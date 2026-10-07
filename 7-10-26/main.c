@@ -29,9 +29,12 @@ int main(void) {
     int A[N];
     srand((unsigned)time(NULL));
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++){
         A[i] = uniform100();
+    	printf("%d ",A[i]);
+    }
 
+	printf("\n\n");
     fun(A, N);
 
     for (int i = 0; i < N; i++)
