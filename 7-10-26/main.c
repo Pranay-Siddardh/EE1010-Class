@@ -1,5 +1,5 @@
-//Code by Mudit
-//Date: 05/10/2026
+//Code by Pranay
+//Date: 07/10/2026
 #include <stdio.h>
 
 void converter(int n, int *A, int *B, int *C)
