@@ -24,7 +24,7 @@ void printVec(sadish *head);
 sadish *loadVec(FILE *fp, int n);
 avyuh *createList(int m,int n);//create m x n matrix array
 void printList(avyuh *p);//print matrix
-avyuh *loadList(char *str,int m,int n);//load matrix from file
+//avyuh *loadList(char *str,int m,int n);//load matrix from file
 avyuh *Listcol(avyuh *a, int n);//extract nth column of matrix
 sadish *colVec(avyuh *a, int n);//extract nth column of matrix
 avyuh *transposeList(avyuh *a);//transpose of a
@@ -134,27 +134,27 @@ return head;
 }
 
 //load matrix from file
-avyuh *loadList(char *str, int m, int n){
-	avyuh *head, *temp;//matrix head
-	int i=0;//dummy integer
-	FILE *fp;
-fp = fopen(str, "r");//open file
-head = (avyuh *)malloc(sizeof(avyuh));
-head->next = NULL;
-temp  = head;
-for (i = 0; i < m; i++)
-{
-	temp->vector = loadVec(fp, n);
-	if (i< m-1){
-	temp->next = (avyuh *)malloc(sizeof(avyuh));
-	temp->next->next = NULL; 
-	temp = temp->next; 
-	}
-}
-fclose(fp);
-return head;
-}
-
+// avyuh *loadList(char *str, int m, int n){
+// 	avyuh *head, *temp;//matrix head
+// 	int i=0;//dummy integer
+// 	FILE *fp;
+// fp = fopen(str, "r");//open file
+// head = (avyuh *)malloc(sizeof(avyuh));
+// head->next = NULL;
+// temp  = head;
+// for (i = 0; i < m; i++)
+// {
+// 	temp->vector = loadVec(fp, n);
+// 	if (i< m-1){
+// 	temp->next = (avyuh *)malloc(sizeof(avyuh));
+// 	temp->next->next = NULL; 
+// 	temp = temp->next; 
+// 	}
+// }
+// fclose(fp);
+// return head;
+// }
+//
 //load vector from file
 sadish *loadVec(FILE *fp, int n)
 {
